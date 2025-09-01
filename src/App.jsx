@@ -11,6 +11,7 @@ import Data from "./pages/Data";
 import Log from "./pages/Log";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/error/404";
+import Vehicle from "./pages/Vehicle";
 
 function App() {
   const location = useLocation();
@@ -19,24 +20,46 @@ function App() {
 
   // Set sidebar open/close hanya sekali saat mount (berdasarkan lebar layar)
   useEffect(() => {
-    if (window.innerWidth >= 768) {
-      setIsSidebarOpen(true);
+    const savedSidebar = localStorage.getItem("sidebarOpen");
+    if (savedSidebar !== null) {
+      setIsSidebarOpen(savedSidebar === "true");
     } else {
-      setIsSidebarOpen(false);
+      // default: cek ukuran layar
+      if (window.innerWidth >= 768) {
+        setIsSidebarOpen(true);
+      } else {
+        setIsSidebarOpen(false);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const savedMode = localStorage.getItem("darkMode");
+    if (savedMode === "true") {
+      setDarkMode(true);
+      document.documentElement.classList.add("dark");
     }
   }, []);
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    if (!darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    setDarkMode((prev) => {
+      const newMode = !prev;
+      localStorage.setItem("darkMode", newMode);
+      if (newMode) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+      return newMode;
+    });
   };
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+    setIsSidebarOpen((prev) => {
+      const newState = !prev;
+      localStorage.setItem("sidebarOpen", newState);
+      return newState;
+    });
   };
 
   const validPaths = [
@@ -46,6 +69,7 @@ function App() {
     "/data",
     "/logs",
     "/settings",
+    "/vehicle",
   ];
 
   const isNotFound = !validPaths.includes(location.pathname);
@@ -76,6 +100,7 @@ function App() {
               <Route path="/data" element={<Data />} />
               <Route path="/logs" element={<Log />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/vehicle" element={<Vehicle />} />
             </Routes>
           </Content>
         </Main>

@@ -19,7 +19,7 @@ const Sidebar = ({ isSidebarOpen }) => {
 
         <div
           className={`absolute left-0 bottom-0 w-full border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-black z-40 text-gray-700 dark:text-white ${
-            isSidebarOpen ? "p-4" : "py-5"
+            isSidebarOpen ? "p-4" : "py-4 px-2"
           }`}
         >
           <ul className="space-y-2 font-semibold">

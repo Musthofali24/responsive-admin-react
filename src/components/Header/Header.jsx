@@ -1,4 +1,4 @@
-import { FaMoon, FaSun, FaRegUser, FaRegBell } from "react-icons/fa";
+import { FaMoon, FaSun, FaRegUser, FaRegBell, FaBell } from "react-icons/fa";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { MdDirectionsBoatFilled } from "react-icons/md";
 import { useState } from "react";
@@ -44,21 +44,19 @@ const Header = ({ darkMode, toggleDarkMode, toggleSidebar }) => {
               {darkMode ? <FaSun /> : <FaMoon />}
             </button>
             <button onClick={handleNotificationsClick}>
-              <FaRegBell className="text-xl dark:text-white cursor-pointer" />
+              {isNotificationsOpen ? (
+                <FaBell className="text-xl dark:text-white cursor-pointer duration-300" />
+              ) : (
+                <FaRegBell className="text-xl dark:text-white cursor-pointer duration-300" />
+              )}
               <div className=""></div>
             </button>
             {isNotificationsOpen && (
-              <div className="absolute right-12 top-12 mt-2 w-40 bg-white dark:bg-black rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 p-3">
+              <div className="absolute right-12 top-12 mt-2 w-75 bg-white dark:bg-black rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 p-3">
+                {/* isi dengan notifikasi */}
                 <ul className="space-y-2">
-                  <li className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white font-semibold rounded px-2 py-1">
-                    <FaRegUser />
-                    <a href="">Profile</a>
-                  </li>
-                  <li className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white font-semibold rounded px-2 py-1">
-                    <a href="">Settings</a>
-                  </li>
-                  <li className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white font-semibold rounded px-2 py-1">
-                    <a href="">Logout</a>
+                  <li className="flex items-center gap-2 cursor-pointer dark:text-white font-semibold rounded px-2 py-1">
+                    <a href="">No new notifications</a>
                   </li>
                 </ul>
               </div>
