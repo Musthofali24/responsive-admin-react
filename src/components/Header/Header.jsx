@@ -1,11 +1,26 @@
-import { FaMoon, FaSun } from "react-icons/fa";
+import { FaMoon, FaSun, FaRegUser, FaRegBell } from "react-icons/fa";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { MdDirectionsBoatFilled } from "react-icons/md";
+import { useState } from "react";
+import userDefault from "../../assets/user01.png";
 
 const Header = ({ darkMode, toggleDarkMode, toggleSidebar }) => {
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+
+  const handleUserClick = () => {
+    setIsUserMenuOpen((prev) => !prev);
+    setIsNotificationsOpen(false);
+  };
+
+  const handleNotificationsClick = () => {
+    setIsNotificationsOpen((prev) => !prev);
+    setIsUserMenuOpen(false);
+  };
+
   return (
     <nav className="fixed top-0 left-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-black dark:border-gray-700">
-      <div className="px-3 py-3 lg:px-5 lg:pl-3">
+      <div className="px-2 py-2 lg:px-5 lg:pl-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-start rtl:justify-end">
             <button
@@ -21,12 +36,56 @@ const Header = ({ darkMode, toggleDarkMode, toggleSidebar }) => {
               </span>
             </a>
           </div>
-          <button
-            className="dark:bg-slate-50 dark:text-slate-700 rounded-full p-2 hover:scale-110 transition-all cursor-pointer"
-            onClick={toggleDarkMode}
-          >
-            {darkMode ? <FaSun /> : <FaMoon />}
-          </button>
+          <div className="flex items-center gap-4 relative">
+            <button
+              className="dark:bg-slate-50 dark:text-slate-700 rounded-full p-2 transition-al duration-300 cursor-pointer"
+              onClick={toggleDarkMode}
+            >
+              {darkMode ? <FaSun /> : <FaMoon />}
+            </button>
+            <button onClick={handleNotificationsClick}>
+              <FaRegBell className="text-xl dark:text-white cursor-pointer" />
+              <div className=""></div>
+            </button>
+            {isNotificationsOpen && (
+              <div className="absolute right-12 top-12 mt-2 w-40 bg-white dark:bg-black rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 p-3">
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white font-semibold rounded px-2 py-1">
+                    <FaRegUser />
+                    <a href="">Profile</a>
+                  </li>
+                  <li className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white font-semibold rounded px-2 py-1">
+                    <a href="">Settings</a>
+                  </li>
+                  <li className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white font-semibold rounded px-2 py-1">
+                    <a href="">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            )}
+            <button
+              className="dark:bg-slate-50 dark:text-slate-700 rounded-full transition-all duration-300 cursor-pointer"
+              onClick={handleUserClick}
+            >
+              <img src={userDefault} alt="" className="w-8 rounded-full" />
+            </button>
+            {isUserMenuOpen && (
+              <div className="absolute right-0 top-12 mt-2 w-40 bg-white dark:bg-black rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 p-3">
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white font-semibold rounded px-2 py-1">
+                    <FaRegUser />
+                    <a href="">Profile</a>
+                  </li>
+                  <li className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white font-semibold rounded px-2 py-1">
+                    <a href="">Settings</a>
+                  </li>
+                  <li className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white font-semibold rounded px-2 py-1">
+                    <a href="">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </nav>

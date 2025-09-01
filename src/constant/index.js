@@ -1,4 +1,4 @@
-import { GoGoal } from 'react-icons/go'
+import { GoGoal, GoDatabase } from 'react-icons/go'
 import { GrPlan } from 'react-icons/gr'
 import {
   IoIosStats,
@@ -19,27 +19,59 @@ import {
 } from 'react-icons/fa'
 
 import { MdOutlineRadar } from 'react-icons/md'
-import { TbGps } from 'react-icons/tb'
+import { TbGps, TbArrowsUpDown, TbSettings } from 'react-icons/tb'
 
 import user01 from '../assets/user01.png'
 import user02 from '../assets/user02.png'
 import user03 from '../assets/user03.png'
 
+const sizeIcon = 18
+
 export const links = [
   {
-    href: '#',
+    href: '/',
     icon: FaChartBar,
-    text: 'Dashboard'
+    text: 'Dashboard',
+    size: sizeIcon
   },
   {
-    href: '#',
+    href: '/tracking',
     icon: MdOutlineRadar,
-    text: 'Tracking'
+    text: 'Tracking',
+    size: sizeIcon
   },
   {
-    href: '#',
+    href: '/missions',
     icon: TbGps,
-    text: 'Missions'
+    text: 'Missions',
+    size: sizeIcon
+  },
+  {
+    href: '/data',
+    icon: GoDatabase,
+    text: 'Data',
+    size: sizeIcon
+  },
+  {
+    href: '/logs',
+    icon: TbArrowsUpDown,
+    text: 'Log',
+    size: sizeIcon
+  }
+]
+
+export const linksbottom = [
+  {
+    href: '/settings',
+    icon: TbSettings,
+    text: 'Settings',
+    size: sizeIcon
+  },
+  {
+    href: '/auth/logout',
+    icon: IoIosLogOut,
+    text: 'Logout',
+    size: sizeIcon
   }
 ]
 

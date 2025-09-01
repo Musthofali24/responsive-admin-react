@@ -6,8 +6,4 @@
   --font-quickSand: "Quicksand", sans-serif;
 }
 
-* {
-  @apply transition-colors duration-300;
-}
-
 @custom-variant dark (&:where(.dark, .dark *));
