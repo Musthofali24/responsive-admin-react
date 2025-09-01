@@ -1,12 +1,15 @@
 import { FaMoon, FaSun, FaRegUser, FaRegBell, FaBell } from "react-icons/fa";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { MdDirectionsBoatFilled } from "react-icons/md";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import userDefault from "../../assets/user01.png";
 
 const Header = ({ darkMode, toggleDarkMode, toggleSidebar }) => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+
+  const userMenuRef = useRef(null);
+  const notificationsRef = useRef(null);
 
   const handleUserClick = () => {
     setIsUserMenuOpen((prev) => !prev);
@@ -17,6 +20,43 @@ const Header = ({ darkMode, toggleDarkMode, toggleSidebar }) => {
     setIsNotificationsOpen((prev) => !prev);
     setIsUserMenuOpen(false);
   };
+
+  // Tutup menu kalau klik di luar
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+        setIsUserMenuOpen(false);
+      }
+      if (
+        notificationsRef.current &&
+        !notificationsRef.current.contains(event.target)
+      ) {
+        setIsNotificationsOpen(false);
+      }
+    };
+
+    const handleScroll = () => {
+      setIsUserMenuOpen(false);
+      setIsNotificationsOpen(false);
+    };
+
+    const handleEsc = (event) => {
+      if (event.key === "Escape") {
+        setIsUserMenuOpen(false);
+        setIsNotificationsOpen(false);
+      }
+    };
+
+    window.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("keydown", handleEsc);
+
+    return () => {
+      window.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-black dark:border-gray-700">
@@ -43,7 +83,7 @@ const Header = ({ darkMode, toggleDarkMode, toggleSidebar }) => {
             >
               {darkMode ? <FaSun /> : <FaMoon />}
             </button>
-            <button onClick={handleNotificationsClick}>
+            <button ref={notificationsRef} onClick={handleNotificationsClick}>
               {isNotificationsOpen ? (
                 <FaBell className="text-xl dark:text-white cursor-pointer duration-300" />
               ) : (
@@ -62,6 +102,7 @@ const Header = ({ darkMode, toggleDarkMode, toggleSidebar }) => {
               </div>
             )}
             <button
+              ref={userMenuRef}
               className="dark:bg-slate-50 dark:text-slate-700 rounded-full transition-all duration-300 cursor-pointer"
               onClick={handleUserClick}
             >
