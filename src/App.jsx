@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Content from "./ui/Content";
 import Main from "./ui/Main";
 import Profile from "./Profile/Profile";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -23,25 +24,20 @@ function App() {
   };
 
   return (
-    <div className="font-quickSand">
-      <Header
-        toggleDarkMode={toggleDarkMode}
-        darkMode={darkMode}
-        toggleSidebar={toggleSidebar}
-      />
-
+    <div className="font-quickSand flex">
       <Sidebar isSidebarOpen={isSidebarOpen} />
-
-      <Main>
-        <Content>
-          <div className="w-full grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            <div className="h-56 bg-white"></div>
-            <div className="h-56 bg-white"></div>
-            <div className="h-56 bg-white"></div>
-            <div className="h-56 bg-white"></div>
-          </div>
-        </Content>
-      </Main>
+      <div className="flex-1 flex flex-col min-h-screen">
+        <Header
+          toggleDarkMode={toggleDarkMode}
+          darkMode={darkMode}
+          toggleSidebar={toggleSidebar}
+        />
+        <Main isSidebarOpen={isSidebarOpen}>
+          <Content>
+            <Dashboard />
+          </Content>
+        </Main>
+      </div>
     </div>
   );
 }

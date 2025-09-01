@@ -14,8 +14,12 @@ import {
   FaCalendarAlt,
   FaFacebookMessenger,
   FaUsersCog,
-  FaListAlt
+  FaListAlt,
+  FaChartArea
 } from 'react-icons/fa'
+
+import { MdOutlineRadar } from 'react-icons/md'
+import { TbGps } from 'react-icons/tb'
 
 import user01 from '../assets/user01.png'
 import user02 from '../assets/user02.png'
@@ -29,43 +33,13 @@ export const links = [
   },
   {
     href: '#',
-    icon: FaCalendarAlt,
-    text: 'Kanban',
-    badge: {
-      text: 'Pro',
-      color: 'bg-gray-100 text-gray-800',
-      darkColor: 'dark:bg-gray-700 dark:text-gray-300'
-    }
+    icon: MdOutlineRadar,
+    text: 'Tracking'
   },
   {
     href: '#',
-    icon: FaFacebookMessenger,
-    text: 'Inbox',
-    badge: {
-      text: '4',
-      color: 'bg-blue-100 text-blue-800',
-      darkColor: 'dark:bg-blue-900 dark:text-blue-300'
-    }
-  },
-  {
-    href: '#',
-    icon: FaUsersCog,
-    text: 'Users'
-  },
-  {
-    href: '#',
-    icon: FaListAlt,
-    text: 'Products'
-  },
-  {
-    href: '#',
-    icon: IoIosLogIn,
-    text: 'Sign In'
-  },
-  {
-    href: '#',
-    icon: IoIosLogOut,
-    text: 'Sign Up'
+    icon: TbGps,
+    text: 'Missions'
   }
 ]
 

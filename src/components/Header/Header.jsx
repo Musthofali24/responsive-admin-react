@@ -1,6 +1,6 @@
 import { FaMoon, FaSun } from "react-icons/fa";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
-import { MdSpaceDashboard } from "react-icons/md";
+import { MdDirectionsBoatFilled } from "react-icons/md";
 
 const Header = ({ darkMode, toggleDarkMode, toggleSidebar }) => {
   return (
@@ -9,13 +9,13 @@ const Header = ({ darkMode, toggleDarkMode, toggleSidebar }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-start rtl:justify-end">
             <button
-              className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 cursor-pointer"
+              className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 cursor-pointer"
               onClick={toggleSidebar}
             >
               <HiOutlineMenuAlt2 className="text-2xl" />
             </button>
             <a href="#" className="flex ms-2 md:me-24">
-              <MdSpaceDashboard className="h-8 me-3 text-xl text-blue-600" />
+              <MdDirectionsBoatFilled className="h-8 me-3 text-xl text-blue-600" />
               <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                 SeaPortal
               </span>
