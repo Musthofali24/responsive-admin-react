@@ -41,10 +41,10 @@ const Topbar = ({ isSidebarOpen }) => {
 
   return (
     <div
-      className={`fixed z-40 top-14 right-0 bg-white
-                  h-10 py-2 px-4 border-b border-gray-200
+      className={`fixed z-30 top-14 right-0 bg-white
+                  h-15 sm:h-10 py-2 px-4 border-b border-gray-200
                   dark:bg-black dark:border-gray-700
-                  flex items-center justify-between
+                  flex flex-col sm:flex-row space-y-1 md:space-y-0 sm:items-center sm:justify-between
                   ${isSidebarOpen ? "md:left-64 left-16" : "left-16"}`}
     >
       {/* Tanggal & Waktu */}
