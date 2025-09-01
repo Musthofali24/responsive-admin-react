@@ -63,18 +63,18 @@ const Header = ({ darkMode, toggleDarkMode, toggleSidebar }) => {
       <div className="px-2 py-2 lg:px-5 lg:pl-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-start rtl:justify-end">
+            <a href="#" className="flex ms-2 md:me-24">
+              <MdDirectionsBoatFilled className="h-8 me-3 text-xl text-blue-600" />
+              <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white hidden sm:block">
+                SeaPortal
+              </span>
+            </a>
             <button
               className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 cursor-pointer"
               onClick={toggleSidebar}
             >
               <HiOutlineMenuAlt2 className="text-2xl" />
             </button>
-            <a href="#" className="flex ms-2 md:me-24">
-              <MdDirectionsBoatFilled className="h-8 me-3 text-xl text-blue-600" />
-              <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
-                SeaPortal
-              </span>
-            </a>
           </div>
           <div className="flex items-center gap-4 relative">
             <button
@@ -92,7 +92,7 @@ const Header = ({ darkMode, toggleDarkMode, toggleSidebar }) => {
               <div className=""></div>
             </button>
             {isNotificationsOpen && (
-              <div className="absolute right-12 top-12 mt-2 w-75 bg-white dark:bg-black rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 p-3">
+              <div className="absolute right-12 top-12 mt-2 w-50 lg:w-75 bg-white dark:bg-black rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 p-3">
                 {/* isi dengan notifikasi */}
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2 cursor-pointer dark:text-white font-semibold rounded px-2 py-1">
