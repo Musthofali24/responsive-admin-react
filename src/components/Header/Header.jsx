@@ -92,7 +92,13 @@ const Header = ({ darkMode, toggleDarkMode, toggleSidebar }) => {
               <div className=""></div>
             </button>
             {isNotificationsOpen && (
-              <div className="absolute right-12 top-12 mt-2 w-50 lg:w-75 bg-white dark:bg-black rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 p-3">
+              <div
+                className={`absolute right-12 top-12 mt-2 w-50 lg:w-75 bg-white dark:bg-black rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 p-3 transition-all duration-300 ${
+                  isNotificationsOpen
+                    ? "opacity-100 scale-100"
+                    : "opacity-0 scale-95 pointer-events-none"
+                }`}
+              >
                 {/* isi dengan notifikasi */}
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2 cursor-pointer dark:text-white font-semibold rounded px-2 py-1">

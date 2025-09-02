@@ -1,6 +1,7 @@
 import { GoDatabase } from 'react-icons/go'
 import { IoIosLogOut } from 'react-icons/io'
 import { FaChartBar } from 'react-icons/fa'
+import { HiOutlineBellAlert } from 'react-icons/hi2'
 
 import { MdOutlineRadar } from 'react-icons/md'
 import { TbGps, TbArrowsUpDown, TbSettings, TbSpeedboat } from 'react-icons/tb'
@@ -42,6 +43,12 @@ export const links = [
     href: '/logs',
     icon: TbArrowsUpDown,
     text: 'Log',
+    size: sizeIcon
+  },
+  {
+    href: '/alerts',
+    icon: HiOutlineBellAlert,
+    text: 'Alerts',
     size: sizeIcon
   }
 ]

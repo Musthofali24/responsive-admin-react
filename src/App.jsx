@@ -12,6 +12,7 @@ import Log from "./pages/Log";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/error/404";
 import Vehicle from "./pages/Vehicle";
+import Alerts from "./pages/Alerts";
 
 function App() {
   const location = useLocation();
@@ -70,6 +71,7 @@ function App() {
     "/logs",
     "/settings",
     "/vehicle",
+    "/alerts",
   ];
 
   const isNotFound = !validPaths.includes(location.pathname);
@@ -94,13 +96,27 @@ function App() {
         <Main isSidebarOpen={isSidebarOpen}>
           <Content>
             <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/tracking" element={<Tracking />} />
-              <Route path="/missions" element={<Missions />} />
-              <Route path="/data" element={<Data />} />
-              <Route path="/logs" element={<Log />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/vehicle" element={<Vehicle />} />
+              <Route path="/" element={<Dashboard darkMode={darkMode} />} />
+              <Route
+                path="/tracking"
+                element={<Tracking darkMode={darkMode} />}
+              />
+              <Route
+                path="/missions"
+                element={<Missions darkMode={darkMode} />}
+              />
+              <Route path="/data" element={<Data darkMode={darkMode} />} />
+              <Route path="/logs" element={<Log darkMode={darkMode} />} />
+              <Route
+                path="/settings"
+                element={<Settings darkMode={darkMode} />}
+              />
+              <Route
+                path="/vehicle"
+                element={<Vehicle darkMode={darkMode} />}
+              />
+              <Route path="/alerts" element={<Alerts />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Content>
         </Main>

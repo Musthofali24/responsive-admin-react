@@ -1,11 +1,20 @@
+import React from "react";
+import { NavLink } from "react-router-dom";
+
 const LinkItem = ({ href, icon: Icon, text, badge, isSidebarOpen, size }) => {
   return (
     <li>
-      <a
-        href={href}
-        className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 gap-2 ${
-          !isSidebarOpen ? "justify-center" : ""
-        }`}
+      <NavLink
+        to={href}
+        className={({ isActive }) =>
+          `flex items-center p-2 rounded-lg gap-2 transition-colors duration-200
+          ${!isSidebarOpen ? "justify-center" : ""}
+          ${
+            isActive
+              ? "bg-blue-600 text-white dark:bg-blue-500" // 🔹 aktif
+              : "text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+          }`
+        }
       >
         <Icon size={size} />
         <span className={`me-3 ${isSidebarOpen ? "flex-1" : "hidden"}`}>
@@ -18,7 +27,7 @@ const LinkItem = ({ href, icon: Icon, text, badge, isSidebarOpen, size }) => {
             {badge.text}
           </span>
         )}
-      </a>
+      </NavLink>
     </li>
   );
 };
