@@ -85,7 +85,7 @@ function App() {
   }
 
   return (
-    <div className="font-quickSand flex bg-white dark:bg-black">
+    <div className="--font-openSans flex bg-white dark:bg-primary">
       <Sidebar isSidebarOpen={isSidebarOpen} />
       <div className="flex-1 flex flex-col min-h-screen">
         <Header
